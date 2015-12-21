@@ -13,10 +13,10 @@ xmlhttp.onreadystatechange = function() {
       var status = JSON.parse(xmlhttp.responseText).status === "open" ||
                    JSON.parse(xmlhttp.responseText).status === "closed" ?
                    JSON.parse(xmlhttp.responseText).status :
-                   "sensordown";
+                   "down";
       document.getElementById("open").style.display = "none";
       document.getElementById("closed").style.display = "none";
-      document.getElementById("sensordown").style.display = "none";
+      document.getElementById("down").style.display = "none";
       document.getElementById(status).style.display = "inline";
     } else {
       console.log('Error: ' + xmlhttp.status)
