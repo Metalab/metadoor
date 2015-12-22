@@ -1,5 +1,23 @@
+body {
+  font-family: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: 2em;
+}
+
+h1 {
+  margin: 0;
+  float: left;
+  font-size: 2em;
+  line-height: 2em;
+}
+
 p {
-  padding: 20px;
+  padding: 0 20px;
+  margin: 0 20px;
+  border-radius: 6px;
+  float:left;
+  font-weight: bold;
+  font-size: 2em;
+  line-height: 2em;
 }
 
 #open {
@@ -8,11 +26,11 @@ p {
 }
 
 #closed {
-  background-color: red;
+  background-color: darkred;
   color: white;
 }
 
 #down {
-  background-color: darkred;
+  background-color: darkblue;
   color: white;
 }
