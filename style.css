@@ -18,6 +18,7 @@ p {
   font-weight: bold;
   font-size: 2em;
   line-height: 2em;
+  display: none;
 }
 
 #open {
