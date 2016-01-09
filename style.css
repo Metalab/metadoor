@@ -26,7 +26,7 @@ iframe {
 }
 
 marquee {
-  margin: 0;
+  margin: -0.5em 0;
   padding: 0;
 }
 
@@ -50,6 +50,7 @@ marquee {
   color: white;
   display: inline;
   width: 300px;
+  padding: 0;
 }
 
 .container {
