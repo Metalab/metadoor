@@ -1,6 +1,5 @@
 body {
   font-family: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
-  font-size: 2em;
 }
 
 h1 {
@@ -23,8 +22,7 @@ p {
 
 iframe {
   border: none;
-  background-color: white;
-  height: 1em;
+  height: 20px;
 }
 
 marquee {
@@ -52,4 +50,12 @@ marquee {
   color: white;
   display: inline;
   width: 300px;
+}
+
+.container {
+  font-size: 2em;
+}
+
+.small {
+  clear: both;
 }
