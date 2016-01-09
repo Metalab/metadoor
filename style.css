@@ -21,6 +21,17 @@ p {
   display: none;
 }
 
+iframe {
+  border: none;
+  background-color: white;
+  height: 1em;
+}
+
+marquee {
+  margin: 0;
+  padding: 0;
+}
+
 #open {
   background-color: green;
   color: white;
@@ -32,7 +43,7 @@ p {
 }
 
 #down {
-  background-color: darkblue;
+  background-color: #f9a825;
   color: white;
 }
 
