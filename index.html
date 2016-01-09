@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <head>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
   <div class="container">
     <h1>Metalab is</h1>
-    <p id="open">open</p>
-    <p id="closed">closed</p>
-    <p id="down">down</p>
+    <p id="status" class="down">loading</p>
     <noscript>
-      <p id="nojavascript">
-        <marquee>u no javascript</marquee>
-      </p>
+      <p id="nojavascript"><marquee>u no javascript</marquee></p>
     </noscript>
   </div>
   <pre class="small"><a href="status.json">API</a> <iframe src="status.json"></iframe></pre>
+
+  <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

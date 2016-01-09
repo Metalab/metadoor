@@ -1,4 +1,6 @@
 var xmlhttp;
+var statusDiv = document.getElementById("status");
+statusDiv.style.display = "inline";
 
 if (window.XMLHttpRequest) {
   xmlhttp = new XMLHttpRequest();
@@ -16,10 +18,8 @@ xmlhttp.onreadystatechange = function() {
                status :
                "down";
 
-      document.getElementById("open").style.display = "none";
-      document.getElementById("closed").style.display = "none";
-      document.getElementById("down").style.display = "none";
-      document.getElementById(status).style.display = "inline";
+      statusDiv.className = status;
+      statusDiv.innerHTML = status;
     } else {
       console.log('Error: ' + xmlhttp.status)
     }

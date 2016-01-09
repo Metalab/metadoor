@@ -5,7 +5,7 @@ body {
 h1 {
   margin: 0;
   float: left;
-  font-size: 2em;
+  font-size: 4em;
   line-height: 2em;
 }
 
@@ -15,9 +15,8 @@ p {
   border-radius: 6px;
   float:left;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 4em;
   line-height: 2em;
-  display: none;
 }
 
 iframe {
@@ -26,23 +25,11 @@ iframe {
 }
 
 marquee {
-  margin: -0.5em 0;
-  padding: 0;
+  display: block;
 }
 
-#open {
-  background-color: green;
-  color: white;
-}
-
-#closed {
-  background-color: darkred;
-  color: white;
-}
-
-#down {
-  background-color: #f9a825;
-  color: white;
+#status {
+  display: none;
 }
 
 #nojavascript {
@@ -51,10 +38,22 @@ marquee {
   display: inline;
   width: 300px;
   padding: 0;
+  line-height: 2em;
 }
 
-.container {
-  font-size: 2em;
+.open {
+  background-color: green;
+  color: white;
+}
+
+.closed {
+  background-color: darkred;
+  color: white;
+}
+
+.down {
+  background-color: #f9a825;
+  color: white;
 }
 
 .small {
