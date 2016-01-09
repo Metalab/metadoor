@@ -1,6 +1,5 @@
 #!/usr/bin/python
 import RPi.GPIO as GPIO
-import socket
 
 with open("status.json", "w") as f:
     f.write('{ "status" : "boot" }')
