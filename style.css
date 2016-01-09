@@ -35,3 +35,10 @@ p {
   background-color: darkblue;
   color: white;
 }
+
+#nojavascript {
+  background-color: darkred;
+  color: white;
+  display: inline;
+  width: 300px;
+}
