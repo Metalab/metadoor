@@ -21,7 +21,8 @@ p {
 
 iframe {
   border: none;
-  height: 20px;
+  height: 30px;
+  overflow: hidden;
 }
 
 marquee {
