@@ -1,0 +1,18 @@
+[Unit]
+Description=Metasense for the Door
+After=syslog.target
+
+[Service]
+Type=simple
+User=httpdoor
+Group=httpdoor
+WorkingDirectory=/home/httpdoor/door
+ExecStart=/home/httpdoor/door/door.py
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
