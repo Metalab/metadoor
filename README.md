@@ -2,7 +2,7 @@
 
 New Metalab™ feature: Look up whether the door is open!
 
-There's now a Raspberry Pi at the door under ```10.20.30.77``` (locally) and ```2a02:61:a2::d8``` (globally) (there's is no mirror in the mean time) and publishes:
+There's now a Raspberry Pi at the door under ```10.20.30.77``` (locally) and ```2a02:61:a2::d8``` or http://entry.bällebad.info/ (IPv6) (globally) (there's is no mirror in the mean time) and publishes:
 * ```index.html``` – Nice and shiny interface
 * ```status.json``` – JSON containing the status
 
