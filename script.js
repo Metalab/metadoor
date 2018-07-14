@@ -32,4 +32,4 @@ xmlhttp.send();
 setInterval(function(){
   xmlhttp.open("GET", "status.json", true);
   xmlhttp.send();
-}, 3000);
+}, 30000);
