@@ -2,7 +2,9 @@
 
 New Metalab™ feature: Look up whether the door is open!
 
-There's now a Raspberry Pi at the door under ```10.20.30.77``` (locally) and ```2a02:61:a2::d8``` or http://entry.bällebad.info/ (IPv6) (globally) (there's is no mirror in the mean time) and publishes:
+**Attention: This solution is temporary and will be replaced in the future by a door status on our homepage https://metalab.at**
+
+There's now a Raspberry Pi at the door under ```10.20.30.77``` (locally), https://hodors.cyber.coffee (IPv4 Mirror globally) and ```2a02:61:a2::d8``` or http://entry.bällebad.info/ (IPv6 only) (globally) and publishes:
 * ```index.html``` – Nice and shiny interface
 * ```status.json``` – JSON containing the status
 
