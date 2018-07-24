@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import RPi.GPIO as GPIO
+import time
 
 PinSwitch = 17
 GPIO.setmode(GPIO.BCM)
@@ -12,26 +13,35 @@ with open("status.json", "w") as f:
     f.close()
     
 # First check bevor going into while loop:
-if input == 1:
-	print('on')
+#input=GPIO.input(PinSwitch)
+#I have no fuckin clue why this is working inverted on startup! - hetti
+if input == 0:
+	print('on out')
 	with open("status.json", "w") as f:
 		f.write('{ "status" : "open" }')
+                f.close
 else:
-	print('off')
+	print('off out')
 	with open("status.json", "w") as f:
 		f.write('{ "status" : "closed" }')
+                f.close
 
 # While loop with GPIO.wait_for_edge that only triggers when switch is turned
-while True:
+while 1:
+    input=GPIO.input(PinSwitch)
     GPIO.wait_for_edge(PinSwitch, GPIO.BOTH)
-    if input == 1:
-        print('on')
+    #Debounce
+    time.sleep(.010)
+    if input == True:
+        print('on while')
         with open("status.json", "w") as f:
             f.write('{ "status" : "open" }')
+            f.close
     else:
-        print('off')
+        print('off while')
         with open("status.json", "w") as f:
             f.write('{ "status" : "closed" }')
+            f.close
 
 # if we ever come here..
 GPIO.cleanup()
