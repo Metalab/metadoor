@@ -11,34 +11,33 @@ input = GPIO.input(PinSwitch)
 with open("status.json", "w") as f:
     f.write('{ "status" : "boot" }')
     f.close()
-    
+
+# Note: 0 is door open, 1 is door closed
 # First check bevor going into while loop:
-#input=GPIO.input(PinSwitch)
-#I have no fuckin clue why this is working inverted on startup! - hetti
 if input == 0:
-	print('on out')
+	print('on @ startup')
 	with open("status.json", "w") as f:
 		f.write('{ "status" : "open" }')
                 f.close
 else:
-	print('off out')
+	print('off @ startup')
 	with open("status.json", "w") as f:
 		f.write('{ "status" : "closed" }')
                 f.close
 
 # While loop with GPIO.wait_for_edge that only triggers when switch is turned
-while 1:
-    input=GPIO.input(PinSwitch)
+while True:
     GPIO.wait_for_edge(PinSwitch, GPIO.BOTH)
     #Debounce
     time.sleep(.010)
-    if input == True:
-        print('on while')
+    input = GPIO.input(PinSwitch)
+    if input == 0:
+        print('on in loop')
         with open("status.json", "w") as f:
             f.write('{ "status" : "open" }')
             f.close
     else:
-        print('off while')
+        print('off in loop')
         with open("status.json", "w") as f:
             f.write('{ "status" : "closed" }')
             f.close
