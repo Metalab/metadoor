@@ -7,7 +7,7 @@ body {
 
 h1 {
   margin: 0;
-  font-size: 4em;
+  font-size: 6em;
   line-height: 2em;
   color: #fff;
 }
@@ -28,7 +28,7 @@ marquee {
   margin: 0 20px;
   border-radius: 6px;
   font-weight: bold;
-  font-size: 4em;
+  font-size: 7em;
   line-height: 2em;
 }
 
@@ -82,6 +82,7 @@ footer {
 }
 
 footer pre{
+  font-size: 1.5em;
   margin: 0;
   padding: 0;
 }
@@ -89,25 +90,21 @@ footer pre{
 footer .left{
   grid-column: 1;
   display: block;
-  height: 15px;
 }
 
 footer .right{
   grid-column: 2;
   display: block;
-  height: 15px;
 }
 
 footer .top{
   grid-row: 1;
   display: block;
-  height: 15px;
 }
 
 footer .bottom{
   grid-row: 2;
   display: block;
-  height: 15px;
 }
 
 .api-link{
