@@ -1,22 +1,15 @@
 body {
   font-family: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
+  background-color: #00174D;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
   margin: 0;
-  float: left;
-  font-size: 4em;
+  font-size: 6em;
   line-height: 2em;
-}
-
-p {
-  padding: 0 20px;
-  margin: 0 20px;
-  border-radius: 6px;
-  float:left;
-  font-weight: bold;
-  font-size: 4em;
-  line-height: 2em;
+  color: #fff;
 }
 
 iframe {
@@ -31,6 +24,12 @@ marquee {
 
 #status {
   display: none;
+  padding: 0 20px;
+  margin: 0 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 7em;
+  line-height: 2em;
 }
 
 #nojavascript {
@@ -60,4 +59,64 @@ marquee {
 .small {
   clear: both;
   margin: 0;
+  padding: 0;
+}
+
+.container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+footer {
+  display: grid;
+  color: #fff;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  position: absolute;
+  bottom: 0;
+  padding: 0.5%;
+  width: 99%;
+}
+
+footer pre{
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
+}
+
+footer .left{
+  grid-column: 1;
+  display: block;
+}
+
+footer .right{
+  grid-column: 2;
+  display: block;
+}
+
+footer .top{
+  grid-row: 1;
+  display: block;
+}
+
+footer .bottom{
+  grid-row: 2;
+  display: block;
+}
+
+.api-link{
+  color: #fff;
+}
+.api-link:hover{
+  color: #000;
+}
+.api-link:visited{
+  color: #fff;
+}
+
+.right-align{
+  text-align: right;
 }
