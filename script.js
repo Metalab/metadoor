@@ -44,7 +44,7 @@ main();
 function main(){
   function display(origin){
     let display = document.querySelector("#timesince-display");
-    display.innerHTML = "Working for: "+ timeSince(new Date(origin).getTime());
+    display.innerHTML = "This Door Status is working without <b>apocalyptic incidents</b> for: "+ timeSince(new Date(origin).getTime());
   }
 
   if(refresh){
