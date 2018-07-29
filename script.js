@@ -44,7 +44,8 @@ main();
 function main(){
   function display(origin){
     let display = document.querySelector("#timesince-display");
-    display.innerHTML = "This Door Status is working without <b>apocalyptic incidents</b> for: "+ timeSince(new Date(origin).getTime());
+    output = timeSince(new Date(origin).getTime());
+    display.innerHTML = output;
   }
 
   if(refresh){
@@ -58,20 +59,23 @@ function main(){
 
 function timeSince(origin){
   function conversion(ms) {
-      var d, h, m, s;
-      s = Math.floor(ms / 1000);
-      m = Math.floor(s / 60);
-      s = s % 60;
-      h = Math.floor(m / 60);
-      m = m % 60;
-      d = Math.floor(h / 24);
-      h = h % 24;
-      return { d: d, h: h, m: m, s: s };
+    var d, h, m, s;
+    s = Math.floor(ms / 1000);
+    m = Math.floor(s / 60);
+    s = s % 60;
+    h = Math.floor(m / 60);
+    m = m % 60;
+    d = Math.floor(h / 24);
+    h = h % 24;
+    return { d: d, h: h, m: m, s: s };
   };
 
   let now = Date.now();
   let timeSince = conversion(now - origin);
 
-  let msg = `${timeSince.d} Days, ${timeSince.h} Hours, ${timeSince.m} Minutes, and ${timeSince.s} seconds.`;
+  let msg = `<b class="timer">${timeSince.d}</b> Days, `
+           +`<b class="timer">${timeSince.h}</b> Hours, `
+           +`<b class="timer">${timeSince.m}</b> Minutes, and `
+           +`<b class="timer">${timeSince.s}</b> seconds.`;
   return msg;
 }

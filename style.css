@@ -60,4 +60,12 @@ marquee {
 .small {
   clear: both;
   margin: 0;
+  padding: 0;
+}
+
+footer {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
 }
