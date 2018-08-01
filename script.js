@@ -9,30 +9,51 @@ if (window.XMLHttpRequest) {
   xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 }
 
+function getStatus(){
+  if(window.location.hostname.includes("cyber.coffee")){
+    xmlhttp.open("GET", "status.json", true);
+    xmlhttp.send();
+  }
+  else if(window.location.hostname.includes("localhost")){
+    var rand = Math.floor((Math.random()*3) +1);
+    console.log(rand);
+    switch(rand){
+      case 1:
+        setStatus("fail");
+      break;
+      case 2:
+        setStatus("open");
+      break;
+      case 3:
+        setStatus("closed");
+      break;
+    }
+  } else {
+    xmlhttp.open("GET", "http://hodors.cyber.coffee/status.json", true);
+    xmlhttp.send();
+  }
+
+}
+
+function setStatus(status){
+  status = status === "open" || status === "closed" ? status : "down";
+
+  statusDiv.className = status;
+  statusDiv.innerHTML = status;
+}
+
 xmlhttp.onreadystatechange = function() {
   if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
     if(xmlhttp.status == 200){
       var status = JSON.parse(xmlhttp.responseText).status;
-      status = status === "open" ||
-               status === "closed" ?
-               status :
-               "down";
-
-      statusDiv.className = status;
-      statusDiv.innerHTML = status;
+      setStatus(satus);
     } else {
       console.log('Error: ' + xmlhttp.status)
     }
   }
 }
-
-xmlhttp.open("GET", "status.json", true);
-xmlhttp.send();
-
-setInterval(function(){
-  xmlhttp.open("GET", "status.json", true);
-  xmlhttp.send();
-}, 30000);
+getStatus();
+setInterval(getStatus, 30000);
 
 // Config Time Since
 const refresh = true;

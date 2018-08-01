@@ -23,20 +23,18 @@ marquee {
 }
 
 #status {
-  display: none;
-  padding: 0 20px;
-  margin: 0 20px;
+  display: unset;
+  padding: 0.1em 0.15em;
+  margin: 0.1em 0.15em;
   border-radius: 6px;
   font-weight: bold;
   font-size: 7em;
-  line-height: 2em;
 }
 
 #nojavascript {
   background-color: darkred;
   color: white;
   display: inline;
-  width: 300px;
   padding: 0;
   line-height: 2em;
 }
@@ -47,12 +45,12 @@ marquee {
 }
 
 .closed {
-  background-color: darkred;
+  background-color: #c00;
   color: white;
 }
 
 .down {
-  background-color: #f9a825;
+  background-color: darkred;
   color: white;
 }
 
