@@ -46,7 +46,7 @@ xmlhttp.onreadystatechange = function() {
   if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
     if(xmlhttp.status == 200){
       var status = JSON.parse(xmlhttp.responseText).status;
-      setStatus(satus);
+      setStatus(status);
     } else {
       console.log('Error: ' + xmlhttp.status)
     }
