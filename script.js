@@ -29,7 +29,7 @@ function getStatus(){
       break;
     }
   } else {
-    xmlhttp.open("GET", "http://hodors.cyber.coffee/status.json", true);
+    xmlhttp.open("GET", "https://hodors.cyber.coffee/status.json", true);
     xmlhttp.send();
   }
 
