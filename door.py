@@ -3,24 +3,27 @@ import RPi.GPIO as GPIO
 import time
 
 PinSwitch = 17
+STATUS_PATH = "./webpage/status.json"
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PinSwitch, GPIO.IN)
 input = GPIO.input(PinSwitch)
 
+
 # boot it up :-)
-with open("status.json", "w") as f:
+with open(STATUS_PATH, "w") as f:
     f.write('{ "status" : "boot" }')
 
 # Note: 0 is door open, 1 is door closed
 # First check bevor going into while loop:
 if input == 0:
     print("on @ startup")
-    with open("status.json", "w") as f:
+    with open(STATUS_PATH, "w") as f:
         f.write('{ "status" : "open" }')
 
 else:
     print("off @ startup")
-    with open("status.json", "w") as f:
+    with open(STATUS_PATH, "w") as f:
         f.write('{ "status" : "closed" }')
 
 # While loop with GPIO.wait_for_edge that only triggers when switch is turned
@@ -31,12 +34,12 @@ while True:
     input = GPIO.input(PinSwitch)
     if input == 0:
         # print('on in loop')
-        with open("status.json", "w") as f:
+        with open(STATUS_PATH, "w") as f:
             f.write('{ "status" : "open" }')
 
     else:
         # print('off in loop')
-        with open("status.json", "w") as f:
+        with open(STATUS_PATH, "w") as f:
             f.write('{ "status" : "closed" }')
 
 # if we ever come here..

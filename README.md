@@ -16,4 +16,4 @@ The JSON API will return one of the following values
 Tadaa!
 
 Brought to you by Nico, Nini, Ripper, Phileas, and many other lovely Metalab people <3  
-Resurrected™ by Hetti
+Resurrected by Hetti
