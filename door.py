@@ -10,37 +10,34 @@ input = GPIO.input(PinSwitch)
 # boot it up :-)
 with open("status.json", "w") as f:
     f.write('{ "status" : "boot" }')
-    f.close()
 
 # Note: 0 is door open, 1 is door closed
 # First check bevor going into while loop:
 if input == 0:
-	print('on @ startup')
-	with open("status.json", "w") as f:
-		f.write('{ "status" : "open" }')
-                f.close
+    print("on @ startup")
+    with open("status.json", "w") as f:
+        f.write('{ "status" : "open" }')
+
 else:
-	print('off @ startup')
-	with open("status.json", "w") as f:
-		f.write('{ "status" : "closed" }')
-                f.close
+    print("off @ startup")
+    with open("status.json", "w") as f:
+        f.write('{ "status" : "closed" }')
 
 # While loop with GPIO.wait_for_edge that only triggers when switch is turned
 while True:
     GPIO.wait_for_edge(PinSwitch, GPIO.BOTH)
-    #Debounce
-    time.sleep(.010)
+    # Debounce
+    time.sleep(0.010)
     input = GPIO.input(PinSwitch)
     if input == 0:
-    	# print('on in loop')
-	with open("status.json", "w") as f:
-	    f.write('{ "status" : "open" }')
-	    f.close
+        # print('on in loop')
+        with open("status.json", "w") as f:
+            f.write('{ "status" : "open" }')
+
     else:
-	# print('off in loop')
-	with open("status.json", "w") as f:
-	    f.write('{ "status" : "closed" }')
-	    f.close
+        # print('off in loop')
+        with open("status.json", "w") as f:
+            f.write('{ "status" : "closed" }')
 
 # if we ever come here..
 GPIO.cleanup()

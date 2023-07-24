@@ -1,13 +1,13 @@
 [Unit]
-Description=Metasense for the Door
+Description=Doorstatus for the Door
 After=syslog.target
 
 [Service]
 Type=simple
-User=httpdoor
-Group=httpdoor
-WorkingDirectory=/home/httpdoor/door
-ExecStart=/home/httpdoor/door/door.py
+User=doorstatus
+Group=doorstatus
+WorkingDirectory=/home/doorstatus/metadoor
+ExecStart=/home/doorstatus/metadoordoor.py
 StandardOutput=syslog
 StandardError=syslog
 Restart=always
