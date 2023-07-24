@@ -32,12 +32,12 @@ while True:
     time.sleep(.010)
     input = GPIO.input(PinSwitch)
     if input == 0:
-        print('on in loop')
+	 # print('on in loop')
         with open("status.json", "w") as f:
             f.write('{ "status" : "open" }')
             f.close
     else:
-        print('off in loop')
+        # print('off in loop')
         with open("status.json", "w") as f:
             f.write('{ "status" : "closed" }')
             f.close
