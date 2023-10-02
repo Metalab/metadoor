@@ -1,6 +1,7 @@
 var xmlhttp;
 var statusDiv = document.getElementById("status");
 statusDiv.style.display = "inline";
+let iconLink = null;
 
 if (window.XMLHttpRequest) {
   xmlhttp = new XMLHttpRequest();
@@ -20,6 +21,18 @@ xmlhttp.onreadystatechange = function() {
 
       statusDiv.className = status;
       statusDiv.innerHTML = status;
+      document.title = "Metalab Door is " + status;
+
+      if (status !== "down") {
+        // Add icon to <head> if it doesn't already exist
+        if (!iconLink) {
+          iconLink = document.createElement("link");
+          iconLink.setAttribute("rel", "icon");
+          document.head.append(iconLink);
+        }
+
+        iconLink.setAttribute("href", "icons/" + status + ".png");
+      }
     } else {
       console.log('Error: ' + xmlhttp.status)
     }
@@ -44,7 +57,9 @@ main();
 function main(){
   function display(origin){
     let display = document.querySelector("#timesince-display");
-    display.innerHTML = "This Door Status is working without <b>apocalyptic incidents</b> for: "+ timeSince(new Date(origin).getTime());
+    display.innerHTML = "This Door Status is working without <b>apocalyptic incidents</b> for: "
+      + timeSince(new Date(origin).getTime())
+      + "\n  The information on this page refreshes automatically.";
   }
 
   if(refresh){
