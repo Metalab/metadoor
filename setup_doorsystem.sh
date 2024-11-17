@@ -20,6 +20,11 @@ systemctl enable --now metadoor
 mkdir -p /var/www/metadoor/
 cp -r metadoor/webpage /var/www/metadoor/
 
+mkdir /tmpdoorstatus
+echo "tmpfs   /tmpdoorstatus         tmpfs   nodev,nosuid,size=1M          0  0" >> /etc/fstab
+# TODO CHECK IF ITS SETUP CORRECTLY: Setup symlink to TMPFS for the status.json
+sudo ln -s /home/metadoor/metadoor/webpage/status.json /tmpdoorstatus/status.json
+
 # Setup the nginx config
 
 cp nginx/eingang.metalab.at /etc/nginx/sites-available/
