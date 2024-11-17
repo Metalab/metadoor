@@ -12,9 +12,9 @@ Run the `setup_doorsystem.sh` script as root via sudo.
 
 ## Folder Structure
 
-dehydrated: Config for dehydrated Let's Encrypt certificates and auto renew
-metadoor: metadoor scripts and services
-nginx: nginx config files
+dehydrated: Config for dehydrated Let's Encrypt certificates and auto renew  
+metadoor: metadoor scripts and services  
+nginx: nginx config files  
 
 # General Info
 
