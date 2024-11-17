@@ -1,0 +1,17 @@
+[Unit]
+Description=Doorstatus for the Door
+After=syslog.target
+
+[Service]
+Type=simple
+User=metadoor
+Group=metadoor
+WorkingDirectory=/home/metadoor/metadoor
+ExecStart=/home/metadoor/metadoor/door.py
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
