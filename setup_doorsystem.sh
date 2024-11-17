@@ -47,6 +47,7 @@ chown dehydrated:www-data /var/www/dehydrated
 chmod u=rwx,go=rx /var/www/dehydrated
 
 cp dehydrated/dehydrated.config /etc/dehydrated/config
+cp dehydrated/domains.txt /etc/dehydrated/
 cp dehydrated/dehydrated.service /etc/systemd/system/dehydrated.service
 
 systemctl daemon-reload
