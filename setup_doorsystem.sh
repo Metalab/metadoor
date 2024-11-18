@@ -8,8 +8,7 @@ fi
 sudo apt update
 sudo apt install nginx dehydrated
 
-# Setup the Python script
-
+# Setup the Python scripts
 cp metadoor/metadoor.service /etc/systemd/system/metadoor.service
 cp metadoor/onsite_status.service /etc/systemd/system/onsite_status.service
 cp metadoor/onsite_status.timer /etc/systemd/system/onsite_status.timer
@@ -20,15 +19,22 @@ systemctl enable --now onsite_status.timer
 
 mkdir -p /var/www/metadoor/
 cp -r metadoor/webpage /var/www/metadoor/
+chown -R www-data:www-data /var/www/metadoor/
 
 mkdir /tmpdoorstatus
-echo "tmpfs   /tmpdoorstatus         tmpfs   nodev,nosuid,size=1M          0  0" >> /etc/fstab
-sudo ln -s /tmpdoorstatus/status.json var/www/metadoor/webpage/status.json
+
+
+if grep -Fxq "/tmpdoorstatus" /etc/fstab
+then
+        echo "tmpfs for doorstatus is already in fstab" 
+else
+        echo "tmpfs   /tmpdoorstatus         tmpfs   nodev,nosuid,size=1M          0  0" >> /etc/fstab
+fi
+sudo ln -s /tmpdoorstatus/status.json /var/www/metadoor/webpage/status.json
 sudo ln -s  /tmpdoorstatus/doorstatus.json /var/www/metadoor/webpage/doorstatus.json
 
 
 # Setup the nginx config
-
 cp nginx/eingang.metalab.at /etc/nginx/sites-available/
 cp -r nginx/common /etc/nginx
 
@@ -67,3 +73,6 @@ ln -s /etc/nginx/sites-available/nginx/eingang.metalab.at /etc/nginx/sites-enabl
 # check nginx config and enable it
 nginx -t
 nginx -s reload
+
+
+echo "Please reboot the system now to have the tmpfs ready!"
