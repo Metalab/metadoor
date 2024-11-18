@@ -6,24 +6,26 @@ if [ $(id -u) -ne 0 ]
 fi
 
 sudo apt update
-sudo apt install nginx
+sudo apt install nginx dehydrated
 
-git clone git@github.com:Metalab/metadoor.git
-cd metadoor
-
-# setup the Python script
+# Setup the Python script
 
 cp metadoor/metadoor.service /etc/systemd/system/metadoor.service
+cp metadoor/onsite_status.service /etc/systemd/system/onsite_status.service
+cp metadoor/onsite_status.timer /etc/systemd/system/onsite_status.timer
+
 systemctl daemon-reload
 systemctl enable --now metadoor
+systemctl enable --now onsite_status.timer
 
 mkdir -p /var/www/metadoor/
 cp -r metadoor/webpage /var/www/metadoor/
 
 mkdir /tmpdoorstatus
 echo "tmpfs   /tmpdoorstatus         tmpfs   nodev,nosuid,size=1M          0  0" >> /etc/fstab
-# TODO CHECK IF ITS SETUP CORRECTLY: Setup symlink to TMPFS for the status.json
-sudo ln -s /home/metadoor/metadoor/webpage/status.json /tmpdoorstatus/status.json
+sudo ln -s /tmpdoorstatus/status.json var/www/metadoor/webpage/status.json
+sudo ln -s  /tmpdoorstatus/doorstatus.json /var/www/metadoor/webpage/doorstatus.json
+
 
 # Setup the nginx config
 
@@ -58,7 +60,6 @@ cp dehydrated/dehydrated.timer /etc/systemd/system/dehydrated.timer
 systemctl daemon-reload
 systemctl enable dehydrated.timer
 systemctl start dehydrated.timer
-
 
 # create symlink to enable webpage
 ln -s /etc/nginx/sites-available/nginx/eingang.metalab.at /etc/nginx/sites-enabled/nginx/eingang.metalab.at

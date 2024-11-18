@@ -1,0 +1,10 @@
+[Unit]
+Description=Onsite Status for the Metalab
+
+[Service]
+Type=oneshot
+User=metadoor
+Group=metadoor
+WorkingDirectory=/home/metadoor/metadoor
+PrivateTmp=yes
+ExecStart=python3 onsite_status.py

@@ -1,0 +1,9 @@
+[Unit]
+Description=every 30 seconds timer for on-site-status
+
+[Timer]
+OnCalendar=*:*:0,30
+Persistent=true
+
+[Install]
+WantedBy=timers.target
