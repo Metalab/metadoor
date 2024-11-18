@@ -8,11 +8,9 @@ User=doorstatus
 Group=doorstatus
 WorkingDirectory=/home/doorstatus/metadoor
 ExecStart=/home/doorstatus/metadoor/door.py
-StandardOutput=syslog
 StandardError=syslog
 Restart=always
 RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
-
