@@ -12,9 +12,9 @@ Run the `setup_doorsystem.sh` script as root via sudo.
 
 ## Folder Structure
 
-dehydrated: Config for dehydrated Let's Encrypt certificates and auto renew  
-metadoor: metadoor scripts and services  
-nginx: nginx config files  
+```dehydrated``` Config for dehydrated Let's Encrypt certificates and auto renew  
+```metadoor```: metadoor scripts and service and timer files  
+```nginx```: nginx config files  
 
 # General Info
 
@@ -22,12 +22,18 @@ nginx: nginx config files
 
 There's now a Raspberry Pi at the door under ```http://10.20.30.77``` (locally) and https://eingang.metalab.at/ (IPv4 + IPv6 globally) that publishes:
 * ```index.html``` – Nice and shiny interface
-* ```status.json``` – JSON containing the status
+* ```status.json``` – JSON containing the onsite status
+* ```doorstatus.json``` – JSON containing the door status
 
-The JSON API will return one of the following values
+The JSON API for the onsite status returns one of the following values
+* ```status: unknown``` – Metalab onsite status is unknown
+* ```status: open``` – Metalab onsite status is powered up
+* ```status: closed``` – Metalab onsite is shutdown
+
+The JSON API for the door status returns one of the following values
 * ```status: boot``` – No status detected yet
-* ```status: open``` – Metalab is open
-* ```status: closed``` – Metalab is closed
+* ```status: open``` – Metalab door is open
+* ```status: closed``` – Metalab door is closed
 
 Tadaa!
 
