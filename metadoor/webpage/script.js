@@ -1,11 +1,22 @@
 var xmlhttp;
-var statusDiv = document.getElementById("status");
-statusDiv.style.display = "inline";
+var xmlhttpdoor;
+var onsiteStatusDiv = document.getElementById("onsite-status");
+onsiteStatusDiv.style.display = "inline";
+var doorStatusDiv = document.getElementById("door-status");
+doorStatusDiv.style.display = "inline";
 let iconLink = null;
+
+
+if (window.XMLHttpRequest) {
+  xmlhttpdoor = new XMLHttpRequest();
+} else {status
+  // code for IE6, IE5
+  xmlhttpdoor = new ActiveXObject("Microsoft.XMLHTTP");
+}
 
 if (window.XMLHttpRequest) {
   xmlhttp = new XMLHttpRequest();
-} else {
+} else {status
   // code for IE6, IE5
   xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 }
@@ -19,8 +30,8 @@ xmlhttp.onreadystatechange = function() {
                status :
                "down";
 
-      statusDiv.className = status;
-      statusDiv.innerHTML = status;
+      onsiteStatusDiv.className = status;
+      onsiteStatusDiv.innerHTML = status;
       document.title = "Metalab Door is " + status;
 
       if (status !== "down") {
@@ -47,10 +58,37 @@ setInterval(function(){
   xmlhttp.send();
 }, 30000);
 
+xmlhttpdoor.onreadystatechange = function() {
+  if (xmlhttpdoor.readyState == XMLHttpRequest.DONE ) {
+    if(xmlhttpdoor.status == 200){
+      var status = JSON.parse(xmlhttpdoor.responseText).status;
+      status = status === "open" ||
+               status === "closed" ?
+               status :
+               "down";
+
+      doorStatusDiv.className = status;
+      doorStatusDiv.innerHTML = status;
+
+    } else {
+      console.log('Error: ' + xmlhttpdoor.status)
+    }
+  }
+}
+
+xmlhttpdoor.open("GET", "doorstatus.json", true);
+xmlhttpdoor.send();
+
+setInterval(function(){
+  xmlhttpdoor.open("GET", "doorstatus.json", true);
+  xmlhttpdoor.send();
+}, 30000);
+
+
 // Config Time Since
 const refresh = true;
 const refreshSeconds = 1;
-const origin = new Date("2018-07-24");
+const origin = new Date("2024-11-19");
 
 // Program
 main();
@@ -59,7 +97,9 @@ function main(){
     let display = document.querySelector("#timesince-display");
     display.innerHTML = "This Door Status is working without <b>apocalyptic incidents</b> for: "
       + timeSince(new Date(origin).getTime())
-      + "\n  The information on this page refreshes automatically.";
+      + "\n\n  The Metalab door didn't crash the network for: "
+      + timeSince(new Date(origin).getTime())
+      + "\n\n  The information on this page refreshes automatically.";
   }
 
   if(refresh){
