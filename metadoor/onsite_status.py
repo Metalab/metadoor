@@ -6,9 +6,7 @@ import config
 ONSITE_STATUS_PATH = "/var/www/metadoor/webpage/status.json"
 HASS_ENDPOINT = "http://10.20.30.97/api/states/input_boolean.lab_is_on"
 
-HASS_API_KEY= os.getenv("HASS_API_KEY")
-
-headers = {"Authorization": f"Bearer {HASS_API_KEY}"}
+headers = {"Authorization": f"Bearer {config.HASS_API_KEY}"}
 data = requests.get(HASS_ENDPOINT, headers=headers).json()
 onsite_status = data["state"]
 with open(ONSITE_STATUS_PATH, "w") as f:
