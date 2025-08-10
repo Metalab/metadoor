@@ -34,12 +34,12 @@ while True:
     input = GPIO.input(PinSwitch)
     if input == 0:
         # print('on in loop')
-        with open(STATUS_PATH, "w") as f:
+        with open(DOOR_STATUS_PATH, "w") as f:
             f.write('{ "status" : "open" }')
 
     else:
         # print('off in loop')
-        with open(STATUS_PATH, "w") as f:
+        with open(DOOR_STATUS_PATH, "w") as f:
             f.write('{ "status" : "closed" }')
 
 # if we ever come here..
